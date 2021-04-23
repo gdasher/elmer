@@ -1,0 +1,20 @@
+diff --git a/cmake/Modules/FindHypre.cmake b/cmake/Modules/FindHypre.cmake
+index a19a555e..0f69d0db 100644
+--- a/cmake/Modules/FindHypre.cmake
++++ b/cmake/Modules/FindHypre.cmake
+@@ -28,6 +28,7 @@ find_path(Hypre_INCLUDE_DIR NAMES HYPRE.h
+   "$ENV{HYPRE_ROOT}/include"
+   "${HYPRE_INCLUDE_DIR}"
+   "${CMAKE_SOURCE_DIR}/hypre/include"
++  PATH_SUFFIXES hypre
+   )
+ 
+ find_library(Hypre_LIBRARY NAMES HYPRE
+@@ -38,6 +39,7 @@ find_library(Hypre_LIBRARY NAMES HYPRE
+   "$ENV{HYPRE_ROOT}/lib"
+   "${HYPRE_LIBRARY_DIR}"
+   "${CMAKE_SOURCE_DIR}/hypre/lib"
++  INTERNAL
+   )
+ 
+ list(APPEND Hypre_LIBRARIES ${Hypre_LIBRARY})
