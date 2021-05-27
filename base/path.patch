@@ -1,5 +1,5 @@
 diff --git a/cmake/Modules/FindHypre.cmake b/cmake/Modules/FindHypre.cmake
-index a19a555e..0f69d0db 100644
+index a19a555e..b5eea773 100644
 --- a/cmake/Modules/FindHypre.cmake
 +++ b/cmake/Modules/FindHypre.cmake
 @@ -28,6 +28,7 @@ find_path(Hypre_INCLUDE_DIR NAMES HYPRE.h
@@ -18,3 +18,22 @@ index a19a555e..0f69d0db 100644
    )
  
  list(APPEND Hypre_LIBRARIES ${Hypre_LIBRARY})
+diff --git a/cmake/Modules/FindParMetis.cmake b/cmake/Modules/FindParMetis.cmake
+index 7634e4ee..ce2b817d 100644
+--- a/cmake/Modules/FindParMetis.cmake
++++ b/cmake/Modules/FindParMetis.cmake
+@@ -14,6 +14,7 @@ SET(PARMETISINCLUDE
+   "$ENV{PARMETISROOT}/include"
+   "$ENV{PARMETIS_ROOT}/include"
+   "${CMAKE_SOURCE_DIR}/parmetis/include"
++  PATH_SUFFIXES parmetis
+   INTERNAL)
+ 
+ # Find include
+@@ -61,4 +62,4 @@ MARK_AS_ADVANCED(
+   PARMETIS_INCLUDENAME
+   ParMetis_INCLUDE_DIR 
+   ParMetis_LIBRARIES 
+-  )
+\ No newline at end of file
++  )

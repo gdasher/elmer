@@ -1,7 +1,5 @@
-Check Keywords "Warn"
-
 Header
-Mesh DB "." "bent_waveguide2"
+Mesh DB "/physics" "bent_waveguide2"
 End
 
 Simulation
@@ -15,10 +13,7 @@ Simulation
   Timestep Intervals = 10
   Steady State Max Iterations = 1
 
-  Partition Mesh = Logical True
-  Partitioning Method = String "Zoltan"
-
-  Post File = "../output/case.vtu"
+  Post File = "output/case.vtu"
   Output Intervals(1) = 1
 End
 
@@ -74,21 +69,19 @@ Solver 1
   Linear System Symmetric = False
   Procedure = "VectorHelmholtz" "VectorHelmholtzSolver"
 
-  Linear System Use Hypre = Logical True
+  ! Direct Solver Params
+  Linear System Solver = "Direct"
+  Linear System Direct Method = "Mumps"
 
-  !Linear System Solver = "Direct"
-
-  Linear System Solver = "Iterative"
-  Linear System Iterative Method = "BiCGStab"
-  BiCGstabl polynomial degree = Integer 4
-  
-  Linear System Preconditioning = String "vanka"
-  !Linear System Preconditioning = String "None"
-
-  Linear System Max Iterations = Integer 3000
-  Linear System Convergence Tolerance = 5.0e-5
-
-  linear system abort not converged = false
+  ! Iterative solver params
+  !Linear System Use Hypre = Logical True
+  !Linear System Solver = "Iterative"
+  !Linear System Iterative Method = "BiCGStab"
+  !BiCGstabl polynomial degree = Integer 4
+  !Linear System Preconditioning = String "None" !"vanka"
+  !Linear System Max Iterations = Integer 3000
+  !Linear System Convergence Tolerance = 5.0e-5
+  !linear system abort not converged = Logical True
 
   Automated Source Projection BCs = Logical False
   Linear System Residual Output = 10
@@ -111,13 +104,17 @@ Solver 2
   Calculate Energy Functional = Logical True
 
   Steady State Convergence Tolerance = 1
-  Linear System Solver = "Iterative"
+
+  Linear System Solver = "Direct"
+  Linear System Direct Method = "Mumps"
+
+  !Linear System Solver = "Iterative"
   !Linear System Preconditioning = None
-  Linear System Preconditioning = String "vanka"
-  Linear System Residual Output = 10
-  Linear System Max Iterations = 5000
-  Linear System Iterative Method = CG
-  Linear System Convergence Tolerance = 1.0e-9
+  !Linear System Preconditioning = String "vanka"
+  !Linear System Residual Output = 10
+  !Linear System Max Iterations = 5000
+  !Linear System Iterative Method = CG
+  !Linear System Convergence Tolerance = 1.0e-9
 End
 
 Solver 3
